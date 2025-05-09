@@ -1,0 +1,34 @@
+#include "mbed.h"
+
+// Blinking rates in milliseconds
+#define LED1_ON_TIME     200ms
+#define LED2_ON_TIME     400ms
+#define LED3_ON_TIME     600ms
+
+int main()
+{
+    // Initialise the digital pins LED1, LED2, and LED3 as outputs
+    DigitalOut led1(LED1);
+    DigitalOut led2(LED2);
+    DigitalOut led3(LED3);
+
+    while (true) {
+        // LED1 turns on for 200 ms, then off
+        led1 = 1;  // Turn LED1 on
+        ThisThread::sleep_for(LED1_ON_TIME);
+        led1 = 0;  // Turn LED1 off
+        ThisThread::sleep_for(50ms);  // Small delay before LED2 turns on
+
+        // LED2 turns on for 400 ms, then off
+        led2 = 1;  // Turn LED2 on
+        ThisThread::sleep_for(LED2_ON_TIME);
+        led2 = 0;  // Turn LED2 off
+        ThisThread::sleep_for(50ms);  // Small delay before LED3 turns on
+
+        // LED3 turns on for 600 ms, then off
+        led3 = 1;  // Turn LED3 on
+        ThisThread::sleep_for(LED3_ON_TIME);
+        led3 = 0;  // Turn LED3 off
+        ThisThread::sleep_for(50ms);  // Small delay before starting the sequence again
+    }
+}
